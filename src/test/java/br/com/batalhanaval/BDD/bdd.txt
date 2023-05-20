@@ -1,0 +1,35 @@
+HU01:Funcionalidade: Posicionar navios no tabuleiro
+Para preparar minha estratégia de batalha
+Como jogador do jogo de batalha naval
+Eu quero poder posicionar meus navios no tabuleiro antes do início do jogo
+
+HU02: Funcionalidade: Atacar os navios no tabuleiro inimigo
+Para tentar afundar os navios inimigos
+Como jogador do jogo de batalha naval
+Eu quero poder selecionar uma posição no tabuleiro inimigo para realizar um ataque
+
+HU03:Funcionalidade: Receber feedback sobre o ataque
+Para saber se acertei ou errei um navio inimigo
+Como jogador do jogo de batalha naval
+Eu quero receber uma notificação sobre o resultado do meu ataque, indicando se acertei ou errei um navio inimigo
+
+HU04:Funcionalidade: Jogar contra um oponente humano
+Para desafiar outra pessoa
+Como jogador do jogo de batalha naval
+Eu quero poder jogar contra um oponente humano, para testar minha estratégia contra jogadores
+
+HU05:Funcionalidade: Jogar contra o computador
+Para desafiar minhas estrategias
+Como jogador do jogo de batalha naval
+Eu quero poder jogar contra um oponente controlado pelo computador para aprimorar minhas habilidades táticas
+
+HU06:Funcionalidade: Visualizar o tabuleiro de forma clara
+Para acompanhar a situação da batalha naval
+Como jogador do jogo de batalha naval
+Eu quero poder visualizar o tabuleiro, com informações claras sobre os navios e os ataques realizados
+para não perder meu progresso e continuar a batalha
+
+HU07:Funcionalidade: Receber notificação de vitória
+Para comemorar a vitória sobre o oponente
+Como jogador do jogo de batalha naval
+Eu quero receber uma notificação ou aviso quando ganhar a partida, para celebrar minha vitória sobre o oponente.
