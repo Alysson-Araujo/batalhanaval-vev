@@ -36,13 +36,19 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    Jogador jogador1 = new Jogador();
-                    jogador1.constroiTabuleiro();
-                    jogador1.preencheTabuleiroComputador();
-                    jogador1.imprimirTabuleiro();
-                    // clearScreen();
+                    Jogador computador = new Jogador();
+                    computador.constroiTabuleiro();
+                    computador.preencheTabuleiroComputador();
+                    computador.imprimirTabuleiro(); // apaga
+
+                    Jogador jogador = new Jogador();
+                    jogador.constroiTabuleiro();
+                    jogador.preencherTabuleiroJogador();
+                    jogador.imprimirTabuleiro();
+
                     Jogo jogoVsPC = new Jogo();
-                    jogoVsPC.jogo(jogador1.tabuleiro);
+                    // jogoVsPC.jogo(jogador1.tabuleiro);
+                    jogoVsPC.jogoVsComputador(computador.tabuleiro, jogador.tabuleiro);
                     break;
                 case 2:
                     Jogador jogador2 = new Jogador();

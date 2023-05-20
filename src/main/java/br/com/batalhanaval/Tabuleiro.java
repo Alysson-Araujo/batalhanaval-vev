@@ -1,6 +1,5 @@
 package br.com.batalhanaval;
 
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -12,7 +11,8 @@ class Tabuleiro {
     public int linhas;
     public int colunas;
     public String[] posisaoBarcos = new String[10];
-    //Se o tamanho vai ser 10, não precisa passar o tamanho como parâmetro
+
+    // Se o tamanho vai ser 10, não precisa passar o tamanho como parâmetro
     public Tabuleiro() {
         // this.tamanho = tamanho;
         this.tabuleiro = new char[tamanho][tamanho];
@@ -22,10 +22,15 @@ class Tabuleiro {
         // this.colunas = colunas;
     }
 
-    public void constroiTabuleiro() {
-        System.out.println("Tabuleiro criado.");
-        for (int i = 0; i < tamanho; i++) {
-            Arrays.fill(tabuleiro[i], '.');
+    public boolean constroiTabuleiro() {
+        if (tabuleiro != null) {
+            System.out.println("Tabuleiro criado.");
+            for (int i = 0; i < tamanho; i++) {
+                Arrays.fill(tabuleiro[i], '.');
+            }
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -49,7 +54,7 @@ class Tabuleiro {
         }
     }
 
-    //Modifiquei aqui para que ele retornasse true, para ter mais sentindo
+    // Modifiquei aqui para que ele retornasse true, para ter mais sentindo
     public boolean verificaTabuleiro(int linha, int coluna) {
         return tabuleiro[linha][coluna] != '#';
     }
@@ -77,17 +82,18 @@ class Tabuleiro {
         System.out.println();
     }
 
-    public boolean verificarQuantidadeDeBarcos(){
+    public boolean verificarQuantidadeDeBarcos() {
         int contador = 0;
         for (int i = 0; i < tamanho; i++) {
-            for (int j = 0; j < tamanho ; j++) {
-                if (tabuleiro[i][j] == '#'){
+            for (int j = 0; j < tamanho; j++) {
+                if (tabuleiro[i][j] == '#') {
                     contador++;
                 }
             }
         }
         return contador == 10;
     }
+
     public int getTamanho() {
         return tamanho;
     }

@@ -2,15 +2,18 @@ package br.com.batalhanaval;
 
 import java.util.Scanner;
 import java.util.Locale;
+import java.util.Random;
 
 public class Jogo {
     private int vitoriasJogador1;
     private int vitoriasJogador2;
     private Scanner scanner;
+    public Random random;
 
     public Jogo() {
         this.vitoriasJogador1 = 0;
         this.vitoriasJogador2 = 0;
+        this.random = new Random();
         this.scanner = new Scanner(System.in);
     }
 
@@ -34,6 +37,56 @@ public class Jogo {
         }
 
         System.out.print("Todos os navios foram afundados. \nParabéns por vencer o jogo!");
+    }
+
+    public void jogoVsComputador(Tabuleiro tabuleiroJogador, Tabuleiro tabuleiroComputador) {
+        boolean jogadorVenceu = false;
+        boolean computadorVenceu = false;
+
+        for (int rodada = 0; !jogadorVenceu && !computadorVenceu; rodada++) {
+            System.out.println("-------------------");
+            System.out.println("Rodada " + (rodada + 1));
+            System.out.println("-------------------");
+            System.out.println("Jogador:");
+
+            do {
+                System.out.println("Digite as coordenadas da sua tentativa. (Exemplo: B 5)");
+                tabuleiroJogador.linhas = scanner.next().toUpperCase(Locale.ROOT).charAt(0) - 65;
+                tabuleiroJogador.colunas = scanner.next().charAt(0) - 48;
+            } while (jogarBomba(tabuleiroJogador));
+
+            if (verificaVitoria(tabuleiroJogador)) {
+                jogadorVenceu = true;
+                break;
+            }
+
+            System.out.println("-------------------");
+            System.out.println("Computador:");
+
+            do {
+                System.out.println("Digite as coordenadas da sua tentativa. (Exemplo: B 5)");
+                // int randomico = ;
+                tabuleiroComputador.linhas = String.valueOf(tabuleiroComputador.tabLinhas[random.nextInt(10)])
+                        .toUpperCase(Locale.ROOT).charAt(0) - 65;
+                System.out.println(tabuleiroComputador.linhas);
+                tabuleiroComputador.colunas = random.nextInt(10);
+            } while (jogarBomba(tabuleiroComputador));
+
+            if (verificaVitoria(tabuleiroComputador)) {
+                computadorVenceu = true;
+                break;
+            }
+        }
+
+        if (jogadorVenceu) {
+            System.out.println("Jogador venceu o jogo!");
+            vitoriasJogador1++;
+        } else if (computadorVenceu) {
+            System.out.println("Computador venceu o jogo!");
+            vitoriasJogador2++;
+        } else {
+            System.out.println("Empate! Nenhum jogador venceu o jogo.");
+        }
     }
 
     public boolean verificaCoordenada(Tabuleiro tab) {
