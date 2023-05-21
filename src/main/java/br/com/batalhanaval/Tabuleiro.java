@@ -11,6 +11,8 @@ class Tabuleiro {
     public int linhas;
     public int colunas;
     public String[] posisaoBarcos = new String[10];
+    public String[] posicoesBombardeadas = new String[100];
+    
 
     // Se o tamanho vai ser 10, não precisa passar o tamanho como parâmetro
     public Tabuleiro() {
@@ -93,6 +95,15 @@ class Tabuleiro {
         }
         return contador == 10;
     }
+
+public boolean posicaoFoiBombardeada(){
+    for (int i = 0; i < posicoesBombardeadas.length; i++) {
+        if(posicoesBombardeadas[i] == tabLinhas[linhas] + " " + colunas){
+            return true;
+        }
+    }
+    return false;
+}
 
     public int getTamanho() {
         return tamanho;

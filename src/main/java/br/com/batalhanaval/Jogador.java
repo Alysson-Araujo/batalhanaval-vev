@@ -35,7 +35,7 @@ class Jogador {
                 }
             }
         } else {
-            while (navios < 10) { // 10
+            while (navios < 2) { // 10
                 System.out.printf("Insira as coordenadas para o barco %d (Exemplo: B 5): ", navios + 1);
                 tabuleiro.linhas = scanner.next().toUpperCase(Locale.ROOT).charAt(0) - 65;
                 tabuleiro.colunas = scanner.next().charAt(0) - 48;

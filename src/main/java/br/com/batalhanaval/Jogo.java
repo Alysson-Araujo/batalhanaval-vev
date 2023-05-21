@@ -9,7 +9,9 @@ public class Jogo {
     private int vitoriasJogador2;
     private Scanner scanner;
     public Random random;
-
+    public int naviosRestantes = 2;
+    public int jogadasJogador1 = 0;
+    public int jogadasJogador2 = 0;
     public Jogo() {
         this.vitoriasJogador1 = 0;
         this.vitoriasJogador2 = 0;
@@ -106,8 +108,7 @@ public class Jogo {
     public void jogoPVP(Tabuleiro tabuleiro1, Tabuleiro tabuleiro2) {
         boolean jogador1Venceu = false;
         boolean jogador2Venceu = false;
-
-        int linhas, colunas;
+        String linhas, colunas;
 
         for (int rodada = 0; !jogador1Venceu && !jogador2Venceu; rodada++) {
             System.out.println("-------------------");
@@ -119,6 +120,7 @@ public class Jogo {
                 System.out.println("Digite as coordenadas da sua tentativa. (Exemplo: B 5)");
                 tabuleiro1.linhas = scanner.next().toUpperCase(Locale.ROOT).charAt(0) - 65;
                 tabuleiro1.colunas = scanner.next().charAt(0) - 48;
+                tabuleiro1.posicoesBombardeadas[jogadasJogador1++] = tabuleiro1.linhas + " " + tabuleiro1.colunas;
             } while (jogarBomba(tabuleiro1));
 
             if (verificaVitoria(tabuleiro1)) {
@@ -153,12 +155,10 @@ public class Jogo {
     }
 
     public boolean verificaVitoria(Tabuleiro tab) {
-        int naviosRestantes = 0;
         int tamanhoTabuleiro = tab.getTamanho();
         for (int i = 0; i < tamanhoTabuleiro; i++) {
             for (int j = 0; j < tamanhoTabuleiro; j++) {
                 if (tab.tabuleiro[i][j] == '#') {
-                    naviosRestantes++;
                 }
             }
         }
@@ -171,16 +171,21 @@ public class Jogo {
             tab.tabuleiro[tab.linhas][tab.colunas] = '%';
             System.out.println("Tentativa errada!");
             tab.imprimirTabuleiro();
+            tab.posicoesBombardeadas[jogadasJogador2++] = tab.linhas + " " + tab.colunas;
             return false;
         } else if (tab.tabuleiro[tab.linhas][tab.colunas] == '%') {
             System.out.println("Tentativa errada!");
             tab.imprimirTabuleiro();
             return false;
         } else {
+            if(!tab.posicaoFoiBombardeada()){
             tab.tabuleiro[tab.linhas][tab.colunas] = 'x';
             System.out.println("Tentativa certa!");
             tab.imprimirTabuleiro();
+            naviosRestantes--;
             return true;
+            }
+            else return false;
         }
     }
 }
